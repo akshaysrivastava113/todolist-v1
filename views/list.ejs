@@ -9,7 +9,8 @@
 </head>
 <body>
     <div class="box" id="heading">
-        <h1><%=todaysDate%></h1>
+        <h2><%=todaysDay%></h2>
+        <h2><%=todaysDate%></h2>
     </div>
 
     <div class="box" id="todolist-container">
@@ -21,13 +22,12 @@
             <%}%>
         
             <form class="item" action="/" method="POST">
-                <input type="text" placeholder="Enter a new task" id="fname" name="fname"/>
+                <input type="text" placeholder="Enter a new task" id="itemInp" name="itemInp"/>
                 <button type="submit">+</button>
-            </form>
-
-            <form id="resetButton" action="/r" method="GET">
-                <button type="submit" id="resetButton">Reset</button>
-            </form>
+            </form>    
+        </div>
+        <div id="resetButtonContainer">
+            <a href="/r"><button type="submit" id="resetButton">Reset</button></a>
         </div>
 
 <script src="scripts/script.js"></script>

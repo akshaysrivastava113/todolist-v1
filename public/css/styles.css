@@ -1,13 +1,23 @@
 html {
-  background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+  background-color: rgb(255, 148, 114);
+  background-image: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
   min-height: 1000px;
   font-family: 'helvetica neue';
+}
+
+
+a:hover, button:hover {
+  cursor: pointer;
 }
 
 h1 {
   color: #fff;
   padding: 10px;
+}
+
+h2 {
+  color: #fff;
+  padding: 5px;
 }
 
 .box {
@@ -19,8 +29,10 @@ h1 {
 }
 
 #heading {
-  background-color: #A683E3;
-  text-align: center;
+  background-color: rgb(242, 112, 156);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 5px;
 }
 
 .item {
@@ -36,7 +48,7 @@ h1 {
 
 input:checked+p {
   text-decoration: line-through;
-  text-decoration-color: #A683E3;
+  text-decoration-color: rgb(242, 112, 156);
 }
 
 input[type="checkbox"] {
@@ -55,8 +67,19 @@ form {
   text-align: center;
   margin-left: 20px;
 }
+#resetButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 #resetButton {
   color: white;
+  background-color: rgb(242, 112, 156);
+  width: 100%;
+  border-radius: 4px;
+  font-size: 20px;
+  min-height: 40px;
+  padding: 5px 20px;
 }
 
 button {
@@ -64,7 +87,7 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #A683E3;
+  background-color: rgb(242, 112, 156);
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
@@ -84,7 +107,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  box-shadow: inset 0 -3px 0 0 #A683E3;
+  box-shadow: inset 0 -3px 0 0 rgb(242, 112, 156);
 }
 
 ::placeholder {

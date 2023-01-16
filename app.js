@@ -15,7 +15,13 @@ app.get('/r', (req,res) => {
 });
 
 app.get('/', (req,res) => {
-    let date = new Date().toLocaleDateString("en-US");
+    const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+
+    let date = new Date().toLocaleDateString("en-US", options);
     let day = new Date().getDay();
     let type = '';
     switch(day){
@@ -48,16 +54,20 @@ app.get('/', (req,res) => {
             type = 'Weekend'
             break;
     }
-    console.log(day);
 
     res.render('list', {todaysDate: date, todaysDay: day, newTodo: todoItems})
 
 })
 
 app.post('/', (req,res) => {
-    let itemRec = req.body.fname;
+    let itemRec = req.body.itemInp;
+    if(!itemRec){
+
+    }
+    else {
     todoItems.push(itemRec);
     res.redirect('/');
+    }
 })
 
 app.listen(3000, () => {
