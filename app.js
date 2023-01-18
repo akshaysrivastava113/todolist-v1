@@ -1,74 +1,46 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const date = require('./date.js');
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 let todoItems = [];
+let workTodoItems = [];
 
 app.get('/r', (req,res) => {
     todoItems = [];
+    workTodoItems = [];
     res.redirect('/');
 });
 
 app.get('/', (req,res) => {
-    const options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
-
-    let date = new Date().toLocaleDateString("en-US", options);
-    let day = new Date().getDay();
-    let type = '';
-    switch(day){
-        case 1: 
-           day = 'Monday';
-           type = 'Weekday'
-           break;
-        case 2: 
-            day = 'Tuesday';
-            type = 'Weekday'
-            break;
-        case 3: 
-            day = 'Wednesday';
-            type = 'Weekday'
-            break;
-        case 4: 
-            day = 'Thursday';
-            type = 'Weekday'
-            break;
-        case 5: 
-            day = 'Friday';
-            type = 'Weekday'
-            break;
-        case 6: 
-            day = 'Saturday';
-            type = 'Weekend'
-            break;
-        case 0: 
-            day = 'Sunday';
-            type = 'Weekend'
-            break;
-    }
-
-    res.render('list', {todaysDate: date, todaysDay: day, newTodo: todoItems})
-
+    let date1 = date.getDate();
+    let date2 = date.getDay();
+    res.render('list', {listTitle: date1, newTodo: todoItems})
 })
 
 app.post('/', (req,res) => {
     let itemRec = req.body.itemInp;
     if(!itemRec){
-
     }
     else {
     todoItems.push(itemRec);
     res.redirect('/');
     }
-})
+});
+
+app.get('/work', (req,res) => {
+    res.render('list', {listTitle: "Work List", newTodo: workTodoItems })
+});
+
+app.post('/work', (req,res) => {
+    workTodoItems.push(req.body.itemInp);
+    res.redirect('/work');
+});
+
 
 app.listen(3000, () => {
     console.log("Server started at 3000");
